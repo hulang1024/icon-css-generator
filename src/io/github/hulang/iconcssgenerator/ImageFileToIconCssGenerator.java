@@ -24,7 +24,10 @@ public class ImageFileToIconCssGenerator {
         this.cssRuleGenerator = cssRuleGenerator;
         this.cssRuleGenerator.setGenerator(this);
     }
-
+    
+    public AbstractCssRuleGenerator getCssRuleGenerator() {
+        return cssRuleGenerator;
+    }
 
     public String getRelativeBasePath() {
         return inputDir.getName().endsWith("/") ? inputDir.getName() : inputDir.getName() + "/";
@@ -46,7 +49,6 @@ public class ImageFileToIconCssGenerator {
             e.printStackTrace();
         }
     }
-
 
     private String[] imageFileExts = {"jpg", "jpeg", "jpe", "gif", "png"};
 

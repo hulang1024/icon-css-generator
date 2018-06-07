@@ -6,7 +6,7 @@ import java.util.List;
 public abstract class AbstractCssRuleGenerator {
     protected ImageFileToIconCssGenerator generator;
 
-    public void setGenerator(ImageFileToIconCssGenerator generator) {
+    protected void setGenerator(ImageFileToIconCssGenerator generator) {
         this.generator = generator;
     }
 
