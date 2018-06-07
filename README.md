@@ -15,7 +15,7 @@ icons
    ├─ window_icon_max.png
 ```
 
-#### 命令行方式
+### 命令行
 ```shell
 java -jar IconCssGenerator.jar images/icons icons_test.css
 ```
@@ -40,17 +40,19 @@ java -jar IconCssGenerator.jar images/icons icons_test.css
 }
 ```
 
-#### Java库
+
+### Java API
+示例：
 ```java
 ImageFileToIconCssGenerator generator = new ImageFileToIconCssGenerator();
-generator.setCssRuleGenerator( new DefaultCssRuleGenerator() );
+generator.setCssRuleGenerator( new DefaultCssRuleGenerator() ); //使用 DefaultCssRuleGenerator
 generator.setInputDir( new File("images/icons") );
 generator.setOutputStream( new FileOutputStream(new File("icons_test.css")) );
 generator.generate();
 ```
 ##### `DefaultCssRuleGenerator`
-`ImageFileToIconCssGenerator`有一个方法`setCssRuleGenerator`，其参数类型为`AbstractCssRuleGenerator`，  
-它抽象了如何生成**css选择器**和**css声明块**以构成一个 css规则。内置了一个子类`DefaultCssRuleGenerator`的实现:  
+`ImageFileToIconCssGenerator`有一个方法`setCssRuleGenerator`，其参数类型为`AbstractCssRuleGenerator`，它抽象了如何生成**css选择器**和**css声明块**。  
+内置了一个子类`DefaultCssRuleGenerator`，已实现:  
 **css选择器**
 * 目录名作为名字部分
 * 多个单词用横线连接
