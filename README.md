@@ -15,7 +15,7 @@ icons
    ├─ window_icon_max.png
 ```
 
-#### 命令行
+### 命令行
 ```shell
 java -jar IconCssGenerator.jar images/icons icons_test.css
 ```
