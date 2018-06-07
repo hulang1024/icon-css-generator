@@ -33,6 +33,12 @@ java -jar IconCssGenerator.jar images/icons icons_test.css
 
 生成 *icons_test.css*：
 ```css
+.icon-add {
+  background: url(icons/add.png) no-repeat center center;
+}
+.icon-del {
+  background: url(icons/del.png) no-repeat center center;
+}
 .icon-a-add {
   background: url(icons/A/Add.png) no-repeat center center;
 }
@@ -40,12 +46,6 @@ java -jar IconCssGenerator.jar images/icons icons_test.css
   background: url(icons/A/ServiceSupport.jpg) no-repeat center center;
 }
 .icon-a-window-icon-max {
-  background: url(csstest/A/window_icon_max.png) no-repeat center center;
-}
-.icon-add {
-  background: url(icons/add.png) no-repeat center center;
-}
-.icon-del {
-  background: url(icons/del.png) no-repeat center center;
+  background: url(icons/A/window_icon_max.png) no-repeat center center;
 }
 ```
