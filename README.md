@@ -12,6 +12,7 @@ icons
 ├─ A
    ├─ Add.png
    ├─ ServiceSupport.jpg
+   ├─ window_icon_max.png
 ```
 **Java库调用方式**
 ```java
@@ -37,6 +38,9 @@ java -jar IconCssGenerator.jar images/icons icons_test.css
 }
 .icon-a-servicesupport {
   background: url(icons/A/ServiceSupport.jpg) no-repeat center center;
+}
+.icon-a-window-icon-max {
+  background: url(csstest/A/window_icon_max.png) no-repeat center center;
 }
 .icon-add {
   background: url(icons/add.png) no-repeat center center;
