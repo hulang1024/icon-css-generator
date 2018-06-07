@@ -4,7 +4,7 @@
 
 ## 用法
 
-图片目录示例：
+图标图片目录示例：
 ```txt
 icons
 ├─ add.png
@@ -15,11 +15,10 @@ icons
    ├─ window_icon_max.png
 ```
 
-### 命令行
+#### 命令行
 ```shell
 java -jar IconCssGenerator.jar images/icons icons_test.css
 ```
-
 
 生成 *icons_test.css*：
 ```css
@@ -51,15 +50,14 @@ generator.setOutputStream( new FileOutputStream(new File("icons_test.css")) );
 generator.generate();
 ```
 ##### `DefaultCssRuleGenerator`
-`ImageFileToIconCssGenerator`有一个方法`setCssRuleGenerator`，其参数类型为`AbstractCssRuleGenerator`，它抽象了如何生成**css选择器**和**css声明块**。  
-内置了一个子类`DefaultCssRuleGenerator`，已实现:  
+`ImageFileToIconCssGenerator`有一个方法`setCssRuleGenerator`，其参数类型为`AbstractCssRuleGenerator`，抽象了如何生成**css选择器**和**css声明块**。内置了一个子类`DefaultCssRuleGenerator`实现:  
 **css选择器**
 * 目录名作为名字部分
 * 多个单词用横线连接
 * 小写
 
 **css声明块**  
-使用了以下模板:
+使用以下模板:
 ```css
 {
   background: url(根路径/图片路径) no-repeat center center;
