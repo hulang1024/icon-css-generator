@@ -1,10 +1,10 @@
 # icon-css-generator
-从图片目录生成图标css。
+扫描图片目录生成图标css。
 
 
 ## 用法
-### 示例  
-图片目录：
+
+图片目录示例：
 ```txt
 icons
 ├─ add.png
@@ -14,18 +14,8 @@ icons
    ├─ ServiceSupport.jpg
    ├─ window_icon_max.png
 ```
-**Java库调用方式**
-```java
-ImageFileToIconCssGenerator generator = new ImageFileToIconCssGenerator();
-generator.setCssRuleGenerator(new DefaultCssRuleGenerator());
-File dir = new File("images/icons");
-generator.setInputDir(dir);
-OutputStream os = new FileOutputStream(new File(dir.getParent(), "icons_test.css"));
-generator.setOutputStream(os);
-generator.generate();
-```
 
-**命令行方式**
+#### 命令行方式
 ```shell
 java -jar IconCssGenerator.jar images/icons icons_test.css
 ```
@@ -49,3 +39,28 @@ java -jar IconCssGenerator.jar images/icons icons_test.css
   background: url(icons/A/window_icon_max.png) no-repeat center center;
 }
 ```
+
+#### Java库
+```java
+ImageFileToIconCssGenerator generator = new ImageFileToIconCssGenerator();
+generator.setCssRuleGenerator( new DefaultCssRuleGenerator() );
+generator.setInputDir( new File("images/icons") );
+generator.setOutputStream( new FileOutputStream(new File("icons_test.css")) );
+generator.generate();
+```
+##### `DefaultCssRuleGenerator`
+`ImageFileToIconCssGenerator`有一个方法`setCssRuleGenerator`，其参数类型为`AbstractCssRuleGenerator`，  
+它抽象了如何生成**css选择器**和**css声明块**以构成一个 css规则。内置了一个子类`DefaultCssRuleGenerator`的实现:  
+**css选择器**
+* 目录名作为名字部分
+* 多个单词用横线连接
+* 小写
+
+**css声明块**  
+使用了以下模板:
+```css
+{
+  background: url(根路径/图片路径) no-repeat center center;
+}
+```
+`setRelativeBasePath`方法可以设置`background url`的根路径。

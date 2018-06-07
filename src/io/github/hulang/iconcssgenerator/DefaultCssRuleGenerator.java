@@ -15,15 +15,7 @@ public class DefaultCssRuleGenerator extends AbstractCssRuleGenerator {
     }
 
     @Override
-    public StringBuilder rule(File imageFile, List<String> dirPath) {
-        return new StringBuilder()
-            .append(selector(imageFile, dirPath))
-            .append(" {\n")
-            .append("  ").append(declarationBlock(imageFile, dirPath))
-            .append("\n}\n");
-    }
-    
-    private StringBuilder selector(File imageFile, List<String> dirPath) {
+    public StringBuilder selector(File imageFile, List<String> dirPath) {
         StringBuilder selector = new StringBuilder(".icon-");
         if (!dirPath.isEmpty()) {
             String[] lowerPath = new String[dirPath.size()];
@@ -33,7 +25,7 @@ public class DefaultCssRuleGenerator extends AbstractCssRuleGenerator {
             }
             selector.append(StringUtils.join(lowerPath, "-")).append("-");
         }
-        
+
         String normalizeName = imageFile.getName();
         normalizeName = normalizeName.substring(0, imageFile.getName().lastIndexOf("."));
         normalizeName = normalizeName.replaceAll("_", "-");
@@ -43,8 +35,8 @@ public class DefaultCssRuleGenerator extends AbstractCssRuleGenerator {
         return selector;
     }
 
-
-    private StringBuilder declarationBlock(File imageFile, List<String> dirPath) {
+    @Override
+    public StringBuilder declarationBlock(File imageFile, List<String> dirPath) {
         StringBuilder url = new StringBuilder();
         url.append(relativeBasePath != null ? relativeBasePath : generator.getRelativeBasePath());
         if (!dirPath.isEmpty()) {
@@ -53,6 +45,8 @@ public class DefaultCssRuleGenerator extends AbstractCssRuleGenerator {
         url.append(imageFile.getName());
 
         return new StringBuilder()
-            .append("background: url(").append(url).append(") no-repeat center center;");
+            .append(" {\n")
+            .append("  background: url(").append(url).append(") no-repeat center center;")
+            .append("\n}");
     }
 }

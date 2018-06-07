@@ -7,7 +7,7 @@ import java.io.OutputStream;
 public class Shell {
     public static void main(String[] args) throws Exception {
         if (args.length < 2) {
-            printHelp();
+        	printUsage();
             return;
         }
         
@@ -33,7 +33,7 @@ public class Shell {
         generator.generate();
     }
 
-    private static void printHelp() {
+    private static void printUsage() {
         System.out.println("Usage:");
         System.out.println("iconcssgenerator source destination [relativeBasePath]");
     }
