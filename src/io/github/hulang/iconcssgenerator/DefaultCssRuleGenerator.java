@@ -24,11 +24,6 @@ public class DefaultCssRuleGenerator extends AbstractCssRuleGenerator {
     }
     
     private StringBuilder selector(File imageFile, List<String> dirPath) {
-        String normalizeName = imageFile.getName();
-        normalizeName = normalizeName.substring(0, imageFile.getName().lastIndexOf("."));
-        normalizeName = normalizeName.replaceAll("_", "-");
-        normalizeName = normalizeName.toLowerCase();
-        
         StringBuilder selector = new StringBuilder(".icon-");
         if (!dirPath.isEmpty()) {
             String[] lowerPath = new String[dirPath.size()];
@@ -38,6 +33,11 @@ public class DefaultCssRuleGenerator extends AbstractCssRuleGenerator {
             }
             selector.append(StringUtils.join(lowerPath, "-")).append("-");
         }
+        
+        String normalizeName = imageFile.getName();
+        normalizeName = normalizeName.substring(0, imageFile.getName().lastIndexOf("."));
+        normalizeName = normalizeName.replaceAll("_", "-");
+        normalizeName = normalizeName.toLowerCase();
         selector.append(normalizeName);
 
         return selector;
